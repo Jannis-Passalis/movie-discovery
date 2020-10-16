@@ -15,36 +15,37 @@ export default function DiscoverMoviesPage() {
     history.push(`/discover/${routeParam}`);
   };
 
-  //   const search = async () => {
-  //     console.log("Start searching for:", searchText);
-  //     setsearchStatus("Searching");
-
-  //     const queryParam = encodeURIComponent(searchText);
-
-  //     const data = await axios.get(
-  //       `https://omdbapi.com/?s=${queryParam}&apikey=796f0295`
-  //     );
-  //     setsearchStatus("Searching Done");
-  //     setMovies(data.data.Search);
-  //     console.log("Success!", data.data.Search);
-  //   };
-
   useEffect(() => {
+    if (params.searchtext === undefined || params.searchtext === "") {
+      return;
+    }
     const fetchMovies = async () => {
       console.log("fetching");
       const queryParam = encodeURIComponent(params.searchtext);
       setsearchStatus("Searching");
-
-      const data = await axios.get(
-        `https://omdbapi.com/?s=${queryParam}&apikey=796f0295`
-      );
-      setsearchStatus("Searching Done");
-      console.log("data", data); // data has all the movies list depending on searchtext
-      setMovies(data.data.Search);
+      try {
+        const data = await axios.get(
+          `https://omdbapi.com/?s=${queryParam}&apikey=796f0295`
+        );
+        if (data.data.Response === "False") {
+          setMovies([]);
+          setsearchStatus(
+            "What are you typing? This movie doesn't even exist!"
+          );
+        } else {
+          setMovies(data.data.Search);
+          setsearchStatus("Searching Done");
+        }
+      } catch (error) {
+        console.log("error test");
+      }
+      //   setsearchStatus("Searching Done");
+      // console.log("data", data); // data has all the movies list depending on searchtext
+      //   setMovies(data.data.Search);
     };
     fetchMovies();
 
-    console.log("HAllo");
+    console.log("Ok, this is the useEffect");
   }, [params.searchtext]);
   return (
     <div>

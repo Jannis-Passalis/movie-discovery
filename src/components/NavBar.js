@@ -31,7 +31,7 @@ export default function NavBar() {
           </li>
           <li>
             <NavLink
-              to="/discover/"
+              to="/discover"
               activeStyle={{
                 fontWeight: "bold",
                 color: "red",
