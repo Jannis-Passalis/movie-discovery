@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ebdef0;
 }
 
 .App-link {
@@ -35,4 +35,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+.head-img {
+  height: 54px;
+  float: right;
 }

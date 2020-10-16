@@ -10,6 +10,11 @@ import MoviePage from "./pages/MoviePage";
 function App() {
   return (
     <div className="App">
+      <img
+        src="https://favorflav.com/images/PopcornGettyImages-1178064673.jpg"
+        alt="head-pic"
+        className="head-img"
+      />
       <NavBar />
       <Switch>
         <Route path="/movie/:imdb_id" component={MoviePage} />
