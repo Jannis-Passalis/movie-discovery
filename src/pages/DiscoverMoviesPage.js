@@ -67,7 +67,7 @@ export default function DiscoverMoviesPage() {
                   Movie Title: {movie.Title} ({movie.Year}){" "}
                 </NavLink>
               </div>
-              <img src={movie.Poster} alt="" />
+              <img src={movie.Poster} alt="movie poster" />
             </div>
           );
         })}
